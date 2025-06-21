@@ -16,7 +16,7 @@ http.createServer((req,res)=>{
         return res.end();
     }else if(req.url==="/about"){
         res.writeHead(200,{'Content-Type':'text/html'});
-        res.write("I am very efficient full stack and cloud based services");
+        res.write("We provide full stack and cloud based services");
         res.write("We also provide the web and app dev services");
         res.write("We have been providing these services over the past 5 years");
         res.write("you can also see the review of our services");
