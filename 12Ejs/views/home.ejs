@@ -1,0 +1,18 @@
+<%- include('partials/head') %>
+<body>
+  <%-include ('partials/header') %>
+    <h1>This is home page.</h1>
+    <p>We are studing the node.js series</p>
+    <p>Here is the name of the students</p>
+    <!-- ejs to render the template files -->
+    <ul class="m-4 space-y-4 ">
+        <% registeredName.forEach((name)=>{ %>
+            <li class="bg-white rounded-xl text-lg font-medium flex flex-col justify-center items-center  shadow-lg gap-10">
+                <%=name.fullname%>
+            </li>
+       <% }) %>
+       
+    </ul>
+    <a href="/contact" class="mt-2 text-3xl">Go to contact</a>
+</body>
+</html>
