@@ -1,0 +1,31 @@
+<%- include('../partials/head')%>
+<body class="min-h-screen bg-gray-600">
+   <%- include('../partials/header')%>
+    <form action="/contact-data" method="post" class="m-10 flex flex-col justify-center ">
+        <label for="homename">Name:</label>
+        <br>
+            <input type="text" id="homename" name="homename" placeholder="Enter home name"
+            class="w-100 border rounded-xs  bg-gray-600"
+            required>
+            <br><br>
+            <label for="price">Price:</label>
+            <br>
+           <input type="number" id="price" name="price" placeholder="Enter per night price"
+            class="w-100 border rounded-xs bg-gray-600">
+            <br><br>
+
+            <label for="location">Location:</label>
+            <br>
+           <input type="text" id="location" name="location" placeholder="Enter the location"
+             class="w-100 border rounded-xs  bg-gray-600">
+            <br><br>
+             <label>Upload Image:</label>
+             <br>
+            <input type="text" name="imageUrl" placeholder="Paste image URL" 
+            class="w-100 border rounded-xs  bg-gray-600" required>
+
+             <br>
+           <button  class="border mt-1 rounded w-20 bg-gray-500 "> <input type="submit" value="submit"></button>
+    </form>
+</body>
+</html>
