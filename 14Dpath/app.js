@@ -8,8 +8,9 @@ app.use((req,res,next)=>{  // it runs for all.
     console.log("Url:"+req.url+"Method:"+req.method);
     next();
 });
-app.use(storeRouter);
 app.use(express.urlencoded());//to parse the form data.
+app.use(storeRouter);
+
 app.use(hostRouter);
 app.use(errorController.errorPage);//to handle the error page.
 app.listen(3000,()=>{

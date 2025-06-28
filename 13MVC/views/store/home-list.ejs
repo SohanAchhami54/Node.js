@@ -1,0 +1,32 @@
+<%- include('../partials/head')%>
+<body>
+   <%- include('../partials/header') %>
+   <section class="min-h-[95vh] bg-gray-600">
+    <h1 class="text-center pt-2 text-xl font-medium text-white">Here are our Home list:</h1>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto justify-center items-center p-7 gap-5    ">
+    <% requestedHome.forEach((home)=>{ %>
+        <li class="bg-gray-400 shadow-2xl space-y-3 p-4 rounded-lg ">
+            
+            <section class="flex justify-center rounded-lg overflow-hidden  ">
+       <img src="<%= home.imageUrl %>" alt="photo" class="w-full h-90  object-cover  hover:scale-120  transition-all duration-500 ease-in delay-300" />
+             </section>
+             <section>
+             <p>Name:<%= home.homename %></p>
+            <p>Price:<%=home.price%></p>
+            <p>Place:<%=home.location%></p>
+            <button class="px-2 py-1 bg-green-400 rounded-lg" >Book</button>
+           </section>
+        </li>
+   <% }) %>
+    <li>
+
+    </li>
+  </ul>
+  <section class="grid justify-center">
+     <h1 class="text-2xl font-medium text-gray-800">This is home page.</h1>
+   <!-- <button class="border mt-1 rounded-lg bg-gray-500"> <a href="/contact">Add home</a></button>  -->
+  </section>
+   
+</section>
+</body>
+</html>
