@@ -1,5 +1,6 @@
 const path=require('path');
 const fs=require('fs');
+const Favorite = require('./favorite');
 module.exports=class Home{
     constructor(homename,price,location,imageUrl){
         this.homename=homename;
@@ -7,22 +8,47 @@ module.exports=class Home{
         this.location=location;
         this.imageUrl=imageUrl;
     }
-      save(){
-        //__dirname vaneko chai ma aailey kun current folder ma xu vaneko ho.
-         this.id=Math.floor(Math.random()*1000)+1;
-        Home.fetchAll((requestedHome)=>{ //save garnu vanda paila file read garerw aauney.
-            requestedHome.push(this);
-            const homeDataPath=(path.join(__dirname, '../','data','home.json'))
-            fs.writeFile(homeDataPath,JSON.stringify(requestedHome),(error)=>{// file change vayo vaney nodemon lai lagxa ki kei change yesma vayo vanerw ani feri server restart gardinxa ani home page empty hunxa.
-            if(error){
-              console.log("Error occurred:", error);    
-            }else{
-             console.log("Home data saved successfully!");
-           }
-        });
-        })
+      // save(){
+      //   //__dirname vaneko chai ma aailey kun current folder ma xu vaneko ho.
+      //    this.id=Math.floor(Math.random()*1000)+1;
+      //    Home.fetchAll((requestedHome)=>{ //save garnu vanda paila file read garerw aauney.
+      //       requestedHome.push(this);
+      //       const homeDataPath=(path.join(__dirname, '../','data','home.json'))
+      //       fs.writeFile(homeDataPath,JSON.stringify(requestedHome),(error)=>{// file change vayo vaney nodemon lai lagxa ki kei change yesma vayo vanerw ani feri server restart gardinxa ani home page empty hunxa.
+      //       if(error){
+      //         console.log("Error occurred:", error);    
+      //       }else{
+      //        console.log("Home data saved successfully!");
+      //      }
+      //   });
+      //   })
         
+      // }
+
+
+      save(){
+           Home.fetchAll((requestedHome)=>{
+              if(this.id){
+                this.id=String(this.id).trim();
+                 requestedHome=requestedHome.map(allhome=>String(allhome.id).trim()==this.id?this:allhome);
+              }else{
+                   this.id=Math.floor(Math.random()*1000)+1;
+                   requestedHome.push(this);
+              } 
+             const homeDataPath=path.join(__dirname,'../','data','home.json');
+             fs.writeFile(homeDataPath,JSON.stringify(requestedHome),(error)=>{
+              if(error){
+                console.log("Error occured",error);
+              }else{
+                console.log("Home data saved successfully");
+              }
+             })
+         })
       }
+
+
+
+
 
     
       static fetchAll(callback){
@@ -44,8 +70,15 @@ module.exports=class Home{
            })
       }
 
-      static favoriteHome(){
-        
+        static deleteHome(id,callback){  //static means we can called this method without calling this object.
+           Home.fetchAll(homes=>{
+               homes= homes.filter(home=>String(home.id).trim()!==String(id).trim());
+                const homeDataPath=path.join(__dirname,'../','data','home.json');
+                 fs.writeFile(homeDataPath,JSON.stringify(homes),error=>{
+                 Favorite.deleteFavHome(id,callback);
+                });
+                
+           })
       }
 }
 
