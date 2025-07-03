@@ -60,4 +60,5 @@ exports.getHomeDetails=async(req,res,next)=>{
       res.render('store/home-detail',{homeDetails:requestedHome,Pagetitle:"Home Details",currentPage:"home"});
     }
 }
+
 //exports.requestedHome=requestedHome;

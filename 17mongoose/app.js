@@ -14,18 +14,6 @@ app.use(storeRouter);
 
 app.use(hostRouter);
 app.use(errorController.errorPage);//to handle the error page.
-
-// const Db_path="mongodb+srv://sohanachhami:sohanachhami123@airbnb.tjemzt4.mongodb.net/?retryWrites=true&w=majority&appName=airbnb";
-// mongoose.connect(Db_path)
-// .then(()=>{
-//    console.log("Connecting to mongodb");
-//    app.listen(3000,()=>{
-//         console.log('Server is running at the port 3000:');
-//     })
-// })
-// .catch((err)=>{
-//    console.log("Error was occured:",err);
-// })
 const DB_PATH="mongodb+srv://sohanachhami:sohanachhami123@airbnb.tjemzt4.mongodb.net/airbnb?retryWrites=true&w=majority&appName=airbnb";
 mongoose.connect(DB_PATH)
 .then(()=>{
