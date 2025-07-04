@@ -1,0 +1,9 @@
+<% if (typeof errors !== 'undefined' && errors && errors.length > 0) { %>
+            <div >
+              <ul class="text-red-700">
+                <% errors.forEach(error => { %>
+                  <li class="text-red-700"><%= error %></li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
