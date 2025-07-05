@@ -1,0 +1,30 @@
+<header class="flex justify-around relative bg-gray-500 p-3 text-xs sm:text-lg md:text-base font-bold w-full">
+  <a href="/">Home</a>
+  <section>
+    <ul class="flex gap-4">
+      
+      <% if(isLoggedIn) { %>
+        <% if(user && user.userType === 'guest') { %>
+          <li><a href="/homes">Home-list</a></li>
+          <li><a href="/bookings">Booking</a></li>
+          <li><a href="/favorite">Favorite</a></li>
+        <% } else { %>
+          <li><a href="/host-home-list">Host-Home</a></li>
+          <li><a href="/contact">Add Home</a></li>
+        <% } %>
+      <% } %>
+
+      <% if (!isLoggedIn) { %>
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Login</a></li>
+      <% } else { %>
+        <li>
+          <form action="/logout" method="post">
+            <button>Logout</button>
+          </form>
+        </li>
+      <% } %>
+
+    </ul>
+  </section>
+</header>

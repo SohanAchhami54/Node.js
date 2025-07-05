@@ -1,0 +1,31 @@
+<%- include('../partials/head') %>
+<body>
+<%- include ('../partials/header')%>
+<section class="bg-gray-500 min-h-screen">
+    <h1 class="text-xl text-center font-medium">This is the home Details:</h1>
+    
+    <ul class="max-w-4xl mx-auto justify-center items-center p-7 gap-5    ">
+   
+        <li class="bg-gray-400 shadow-2xl space-y-3 p-4 rounded-lg ">
+            
+            <section class="flex justify-center rounded-lg overflow-hidden  ">
+       <img src="<%=homeDetails.image %>" alt="photo" class="w-full h-90  object-cover  hover:scale-120  transition-all duration-700 cubic-bezier(0.95, 0.05, 0.795, 0.035) delay-300" />
+             </section>
+             <section class="grid">
+             <p>Name:<%= homeDetails.homename %></p>
+            <p>Price:<%=homeDetails.price%></p>
+            <p>Place:<%=homeDetails.location%></p>
+            <section class="flex gap-3 mt-3">
+               <button class="bg-green-500 px-2 py-1 rounded">Book</button>
+                 <%-include ('../partials/favorite')%>
+            </section>
+           </section>
+        </li>
+ 
+    <li>
+
+    </li>
+  </ul>
+</section>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<%- include('../partials/head')%>
+<body class="min-h-screen bg-gray-600 min-h-screen">
+   <%- include('../partials/header')%>
+   <h1 class="text-center mt-3 text-xl font-medium text-white"><%=editing?"Edit:":"Register your homes:"%></h1>
+   <section class=" flex flex-col justify-center bg-gray-700 max-w-xl mx-auto border-2 rounded-xl mt-10">
+    
+      <form action="<%= editing ? '/edit-home' : '/contact-data' %>" method="post" enctype="multipart/form-data"
+         class=" mx-auto py-2 flex flex-col justify-center ">
+
+       <input type="hidden" name="id" value="<%=editing?home._id :''%> ">  
+      <label for="homename">Name:</label>
+        <br>
+            <input type="text" id="homename" name="homename" placeholder="Enter home name"
+            value="<%=editing?home.homename:""%>""
+            class="w-100 border rounded-xs  bg-gray-400"
+            required>
+            <br>
+            <label for="price">Price:</label>
+            <br>
+           <input type="number" id="price" name="price" placeholder="Enter per night price"
+             value="<%=editing?home.price:""%>""
+            class="w-100 border rounded-xs bg-gray-400">
+            <br>
+
+            <label for="location">Location:</label>
+            <br>
+           <input type="text" id="location" name="location" placeholder="Enter the location"
+            value="<%=editing?home.location:""%>""
+             class="w-100 border rounded-xs  bg-gray-400">
+            <br>
+             <label>Upload Image:</label>
+             <br>
+            <input type="file" name="image" 
+            accept="image/jpg, image/png, image/jpeg"
+            class="w-100 border bg-gray-500">
+             <br>
+             <label for="description">Description:</label>
+             <br>
+             <textarea  id="description" name="description" placeholder="Add description" 
+             class="w-100 h-29 border rounded-xs bg-gray-400">
+             <%=editing?home.description:''%>
+             </textarea>
+             <br>
+             
+           <button  class="border mt-1 rounded w-20 bg-gray-500 "> <input type="submit" 
+             value="<%=editing?"Update": "Add home"%>""></button>
+    </form>
+    </section>
+</body>
+</html>
